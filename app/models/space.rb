@@ -3,5 +3,8 @@ class Space < ActiveRecord::Base
   has_many :shared_office_spaces
   has_many :shared_users, through: :shared_office_spaces, source: :user
 
-  validates :owner, presence: true
+  validates :owner, :name, :address, presence: true
+
+  AMENITIES = ['Internate', 'Canteen', 'Power Backup', '4 wheeler parking']
+
 end

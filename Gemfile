@@ -30,7 +30,7 @@ gem 'devise'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-# Use Unicorn as the app server
+# Use puma as the app server
 gem 'puma', '~> 3.2'
 
 group :development, :test do
@@ -39,10 +39,10 @@ group :development, :test do
 end
 
 group :development do
-  # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 2.0'
+  gem 'better_errors'
+  gem 'binding_of_caller'
 
-  # mutes assets pipeline log messages
+  # mutes assets pipelibinding_of_callerne log messages
   gem 'quiet_assets'
 end
 

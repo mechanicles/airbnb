@@ -55,5 +55,7 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
 
+  resources :spaces
+
   root 'home#index'
 end
