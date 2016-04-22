@@ -1,0 +1,20 @@
+<div class="row" style="padding-top: 10px;">
+  <h2>User Profile</h2>
+  <%= form_for @user, url: user_profile_update_path, method: :put, class: "bootstrap-center-form-medium" do |f| %>
+    <%= render 'shared/form_errors', object: @user %>
+    <div class="form-controls">
+      <%= f.label :description %>
+      <%= f.text_area :description, class: "form-control" %>
+      <%= f.label :phone_number %>
+      <%= f.text_field :phone_number, class: "form-control" %>
+      <%= f.label :address %>
+      <%= f.text_area :address, class: "form-control" %>
+      <%= f.label :company_name %>
+      <%= f.text_field :company_name, class: "form-control" %>
+      <br />
+      <%= f.submit f.object.new_record? ? "Create" : "Update" %>
+    </div>
+  <% end %>
+</div>
+
+
