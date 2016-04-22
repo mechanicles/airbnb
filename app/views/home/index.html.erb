@@ -1,1 +1,8 @@
-This is home page.
+<h2>Shared Office Spaces</h2>
+<% @spaces.each do |space| %>
+  <div>
+    <b><%= space.name %></b> ( <%= space.address %> )
+    <%= render 'shared/space_seats_availability', space: space %>
+  </div>
+  <br />
+<% end %>

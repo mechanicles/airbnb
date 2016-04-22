@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
 
   def index
-    render
+    @spaces = Space.all
   end
 
 end

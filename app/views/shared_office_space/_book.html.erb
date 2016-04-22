@@ -1,0 +1,10 @@
+<br/>
+<h5><b>Book this place:</b></h5>
+<%= form_for :shared_office_space, url: shared_office_space_book_path, method: :post do |f| %>
+  <%= f.label 'Publicly Shared' %>
+  <%= f.check_box :publicly_shared %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.hidden_field :space_id, value: space.id %>
+  <br/>
+  <%= f.submit 'Book this space' %>
+<% end %>

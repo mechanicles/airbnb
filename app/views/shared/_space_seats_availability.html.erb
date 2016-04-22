@@ -1,0 +1,7 @@
+<% if space.total_seats_booked?  %>
+  <b> All seats are booked! </b>
+<% elsif current_user.booked?(space) %>
+  <b> You have booked this place! </b>
+<% else %>
+  <%= set_available_or_book_option_for(space) %>
+<% end %>

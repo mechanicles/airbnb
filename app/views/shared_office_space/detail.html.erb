@@ -1,0 +1,22 @@
+<h2>Shared Office Spaces</h2>
+<%= render 'shared/form_errors', object: @space %>
+<div>
+  Name: <%= @space.name %>
+  <br/>
+  Description: <%= @space.description %>
+  <br/>
+  Address: <%= @space.address %>
+  <br/>
+  Total Seats: <%= @space.total_seats %>
+  <br/>
+  Start time: <%= @space.start_time %>
+  <br/>
+  End time: <%= @space.end_time %>
+  <br/>
+  Amenities: <%= @space.amenities.try(:join, ', ') %>
+</div>
+<%= render 'shared/space_seats_availability', space: @space %>
+<br/>
+<%= link_to "Show all shared office spaces", root_path %>
+<br />
+

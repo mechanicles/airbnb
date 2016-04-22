@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   get 'user_profile/edit'
   put 'user_profile/update'
 
+  get 'shared_office_space/detail'
+  post 'shared_office_space/book'
+
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

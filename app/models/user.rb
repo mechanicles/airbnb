@@ -13,4 +13,8 @@ class User < ActiveRecord::Base
       address.present? && company_name.present?
   end
 
+  def booked?(space)
+    shared_office_spaces.where(space_id: space.id).any?
+  end
+
 end

@@ -9,6 +9,9 @@ class Space < ActiveRecord::Base
 
   AMENITIES = ['Internet', 'Canteen', 'Power Backup', '4 wheeler parking']
 
+  def total_seats_booked?
+    shared_office_spaces.count == total_seats
+  end
 
   private
 
