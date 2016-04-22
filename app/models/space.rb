@@ -2,10 +2,12 @@ class Space < ActiveRecord::Base
   belongs_to :owner, class_name: 'User', foreign_key: :user_id
   has_many :shared_office_spaces
   has_many :shared_users, through: :shared_office_spaces, source: :user
+  has_one :address, as: :addressable
 
-  validates :owner, :name, :address, presence: true
-
+  validates :owner, :name, presence: true
   validate :start_time_and_end_time
+
+  accepts_nested_attributes_for :address
 
   AMENITIES = ['Internet', 'Canteen', 'Power Backup', '4 wheeler parking']
 

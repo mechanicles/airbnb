@@ -11,10 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160421154022) do
+ActiveRecord::Schema.define(version: 20160422145025) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "addresses", force: :cascade do |t|
+    t.string   "street1"
+    t.string   "street2"
+    t.string   "city"
+    t.string   "state"
+    t.string   "country"
+    t.integer  "addressable_id"
+    t.string   "addressable_type"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "addresses", ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable_type_and_addressable_id", using: :btree
 
   create_table "shared_office_spaces", force: :cascade do |t|
     t.integer  "user_id",                        null: false
@@ -29,7 +43,6 @@ ActiveRecord::Schema.define(version: 20160421154022) do
 
   create_table "spaces", force: :cascade do |t|
     t.string   "name",                     null: false
-    t.text     "address",                  null: false
     t.text     "description"
     t.integer  "total_seats"
     t.string   "start_time"
@@ -57,7 +70,6 @@ ActiveRecord::Schema.define(version: 20160421154022) do
     t.datetime "updated_at"
     t.text     "description"
     t.string   "phone_number"
-    t.text     "address"
     t.string   "company_name"
   end
 

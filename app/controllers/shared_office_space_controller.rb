@@ -26,4 +26,5 @@ class SharedOfficeSpaceController < ApplicationController
   def shared_office_space_params
     params.require(:shared_office_space).permit(:user_id, :space_id, :publicly_shared)
   end
+
 end

@@ -4,6 +4,7 @@ class SpacesController < ApplicationController
 
   def new
     @space = current_user.owned_spaces.build
+    @space.build_address
   end
 
   def edit
@@ -23,8 +24,10 @@ class SpacesController < ApplicationController
   private
 
   def space_params
-    params.require(:space).permit(:name, :address, :description, :total_seats,
-                                  :start_time, :end_time, { :amenities => [] }, :user_id)
+    params.require(:space).permit(:name, :description, :total_seats, :start_time,
+                                  :end_time, { :amenities => [] }, :user_id,
+                                  address_attributes: [:street1, :street2, :city,
+                                                       :state, :country])
   end
 
   def check_user_profile_completion

@@ -6,6 +6,9 @@ class User < ActiveRecord::Base
 
   has_many :owned_spaces, class_name: 'Space', foreign_key: :user_id
   has_many :shared_office_spaces
+  has_one :address, as: :addressable
+
+  accepts_nested_attributes_for :address
 
 
   def profile_completed?
