@@ -6,6 +6,4 @@ class Space < ActiveRecord::Base
   validates :owner, :name, :address, presence: true
 
   AMENITIES = ['Internet', 'Canteen', 'Power Backup', '4 wheeler parking']
-
-  serialize :amenities
 end

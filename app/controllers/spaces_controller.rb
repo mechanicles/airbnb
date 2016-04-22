@@ -21,6 +21,6 @@ class SpacesController < ApplicationController
 
   def space_params
     params.require(:space).permit(:name, :address, :description, :total_seats,
-                                  :start_time, :end_time, :amenities, :user_id)
+                                  :start_time, :end_time, { :amenities => [] }, :user_id)
   end
 end
