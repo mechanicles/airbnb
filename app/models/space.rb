@@ -5,5 +5,19 @@ class Space < ActiveRecord::Base
 
   validates :owner, :name, :address, presence: true
 
+  validate :start_time_and_end_time
+
   AMENITIES = ['Internet', 'Canteen', 'Power Backup', '4 wheeler parking']
+
+
+  private
+
+  def start_time_and_end_time
+    if start_time.nil? || end_time.nil?
+      errors.add(:base, "Start time and End time should not be blank")
+    elsif start_time > end_time
+      errors.add(:start_time, "should be less than End time")
+    end
+  end
+
 end
