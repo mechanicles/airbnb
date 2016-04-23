@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160422171717) do
+ActiveRecord::Schema.define(version: 20160423072737) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,16 +42,18 @@ ActiveRecord::Schema.define(version: 20160422171717) do
   add_index "shared_office_spaces", ["user_id"], name: "index_shared_office_spaces_on_user_id", using: :btree
 
   create_table "spaces", force: :cascade do |t|
-    t.string   "name",                     null: false
+    t.string   "name",                        null: false
     t.text     "description"
     t.integer  "total_seats"
     t.string   "start_time"
     t.string   "end_time"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.integer  "user_id"
-    t.text     "amenities",   default: [],              array: true
-    t.text     "pictures",    default: [],              array: true
+    t.text     "amenities",      default: [],              array: true
+    t.text     "pictures",       default: [],              array: true
+    t.integer  "cost_per_seat"
+    t.string   "seating_period"
   end
 
   add_index "spaces", ["user_id"], name: "index_spaces_on_user_id", using: :btree
