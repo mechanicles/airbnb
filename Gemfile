@@ -33,14 +33,16 @@ gem 'devise'
 # Use puma as the app server
 gem 'puma', '~> 3.2'
 
+gem "mini_magick"
+gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 end
 
 group :development do
-  gem 'better_errors'
-  gem 'binding_of_caller'
+  gem 'web-console', '~> 2.0'
 
   # mutes assets pipelibinding_of_callerne log messages
   gem 'quiet_assets'

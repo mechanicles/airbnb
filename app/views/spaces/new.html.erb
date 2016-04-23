@@ -32,6 +32,7 @@
       <%= f.label :amenities %>
       <%= f.select :amenities, Space::AMENITIES.map { |a| [a, a] }, { include_hidden: false },
         { multiple: true, class: "form-control" } %>
+      <%= f.file_field :pictures, multiple: true %>
       <br />
       <%= f.submit f.object.new_record? ? "Create" : "Update" %>
     </div>
