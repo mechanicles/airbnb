@@ -25,7 +25,7 @@ class SpacesController < ApplicationController
 
   def space_params
     params.require(:space).permit(:name, :description, :total_seats, :start_time,
-                                  :end_time, { amenities: [] }, :user_id,
+                                  :end_time, { amenities: [] }, :user_id, :featured,
                                   { address_attributes: [:street1, :street2, :city,
                                                        :state, :country] },
                                   { pictures: [] } )

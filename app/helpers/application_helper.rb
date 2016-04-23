@@ -11,4 +11,5 @@ module ApplicationHelper
       render 'shared_office_space/book', space: space
     end
   end
+
 end

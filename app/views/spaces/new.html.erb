@@ -24,15 +24,30 @@
       <%= f.text_area :description, class: "form-control" %>
       <%= f.label :total_seats %>
       <%= f.text_field :total_seats, class: "form-control" %>
+      <%= f.label :cost_per_seat %>
+      <%= f.text_field :cost_per_seat, class: "form-control" %>
+      <%= f.label :seating_period %>
+      <%= f.select :seating_period, seating_period, class: "form-control" %>
+      <br/>
       <%= f.label :start_time %>
       <%= f.select :start_time, timing_list, class: "form-control" %>
       <%= f.label :end_time %>
       <%= f.select :end_time, timing_list, class: "form-control" %>
-      <br />
+      <br/>
       <%= f.label :amenities %>
-      <%= f.select :amenities, Space::AMENITIES.map { |a| [a, a] }, { include_hidden: false },
+      <%= f.select :amenities, amenities, { include_hidden: false },
         { multiple: true, class: "form-control" } %>
+      <br/>
+      <%= f.label "Upload Pictures" %>
       <%= f.file_field :pictures, multiple: true %>
+      <% if current_user.admin? %>
+        <br/>
+        <%= f.label "Featured?" %>
+        <%= f.label :"Yes" %>
+        <%= f.radio_button :featured, true %>
+        <%= f.label :"No" %>
+        <%= f.radio_button :featured, false %>
+      <% end %>
       <br />
       <%= f.submit f.object.new_record? ? "Create" : "Update" %>
     </div>
