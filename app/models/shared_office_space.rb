@@ -3,7 +3,7 @@ class SharedOfficeSpace < ActiveRecord::Base
   belongs_to :space
 
   validates :user, :space, presence: true
-
+  validates_uniqueness_of :space_id, scope: [:user_id], message: "has been taken by this user"
   validate :check_availability_of_seats
 
   private

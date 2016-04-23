@@ -33,8 +33,8 @@ class SpacesController < ApplicationController
 
   def check_user_profile_completion
     unless current_user.profile_completed?
-      msg = "To create a new space, first you need to complete your profile"
-      redirect_to user_profile_edit_path, notice: msg
+      msg = "To create a new space, first you need to complete your profile!"
+      redirect_to user_profile_edit_path, alert: msg
     end
   end
 

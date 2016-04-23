@@ -47,10 +47,10 @@ ActiveRecord::Schema.define(version: 20160423081547) do
     t.integer  "total_seats"
     t.string   "start_time"
     t.string   "end_time"
+    t.text     "amenities",      default: [],                 array: true
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
     t.integer  "user_id"
-    t.text     "amenities",      default: [],                 array: true
     t.text     "pictures",       default: [],                 array: true
     t.integer  "cost_per_seat"
     t.string   "seating_period"
