@@ -2,7 +2,8 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable,
+         :omniauthable, :omniauth_providers => [:facebook]
 
   has_many :owned_spaces, class_name: 'Space', foreign_key: :user_id
   has_many :shared_office_spaces
@@ -10,7 +11,15 @@ class User < ActiveRecord::Base
 
   accepts_nested_attributes_for :address
 
+
   ROLES = { admin: 'admin' }
+
+  #def self.from_omniauth(auth)
+    #where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      #user.email = auth.info.email
+      #user.password = Devise.friendly_token[0,20]
+    #end
+  #end
 
   def admin?
     role == ROLES[:admin]

@@ -1,4 +1,5 @@
 <div class="row" style="padding-top: 10px;">
+  <%= link_to "Connect with Facebook", user_omniauth_authorize_path(:facebook) %>
   <h2>User Profile</h2>
   <%= form_for @user, url: user_profile_update_path, method: :put, class: "bootstrap-center-form-medium" do |f| %>
     <%= render 'shared/form_errors', object: @user %>
