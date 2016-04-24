@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
 
   def index
-    @featured_speaces = Space.featured
+    @featured_spaces = Space.featured
     @spaces = Space.all
   end
 

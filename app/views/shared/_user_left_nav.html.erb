@@ -1,5 +1,6 @@
 <ul class="nav navbar-nav navbar-left">
   <% if user_signed_in? %>
+    <li> <%= link_to "Home", root_path %> </li>
     <li> <%= link_to "User Profile", user_profile_edit_path %> </li>
     <li> <%= link_to "Create Own Office Space", new_space_path %> </li>
   <% end %>

@@ -3,7 +3,7 @@ class Space < ActiveRecord::Base
 
   belongs_to :owner, class_name: 'User', foreign_key: :user_id
   has_one :address, as: :addressable
-  has_many :shared_office_spaces
+  has_many :shared_office_spaces, dependent: :destroy
   has_many :shared_users, through: :shared_office_spaces, source: :user
 
   validates :owner, :name, :total_seats, presence: true
@@ -18,6 +18,11 @@ class Space < ActiveRecord::Base
 
   def total_seats_booked?
     shared_office_spaces.count == total_seats
+  end
+
+  def participated_users
+    User.joins(:shared_office_spaces).
+      where(shared_office_spaces: { space_id: id, publicly_shared: true } )
   end
 
   def thumbnail_picture

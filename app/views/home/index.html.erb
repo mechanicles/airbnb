@@ -1,11 +1,11 @@
-<% if @spaces.present? %>
-  <div style="float:inherit">
+<% if @featured_spaces.present? %>
+  <div>
     <div class="page-header">
       <h1>Featured Shared Office Spaces</h1>
     </div>
 
     <div>
-      <%= @spaces.in_groups_of(3, false) do |group| %>
+      <% @featured_spaces.in_groups_of(3, false) do |group| %>
         <% group.each do |space| %>
           <%= link_to shared_office_space_detail_path(space_id: space.id) do %>
             <div class="col-md-4">
@@ -20,6 +20,7 @@
             </div>
           <% end %>
          <% end %>
+        <br>
       <% end %>
     </div>
   </div>
@@ -28,13 +29,13 @@
 <% end %>
 
 <% if @spaces.present? %>
-  <div style="float:inherit">
+  <div style="clear:left">
     <div class="page-header">
       <h1>Shared Office Spaces</h1>
     </div>
 
     <div>
-      <%= @spaces.in_groups_of(3, false) do |group| %>
+      <% @spaces.in_groups_of(3, false) do |group| %>
         <% group.each do |space| %>
           <%= link_to shared_office_space_detail_path(space_id: space.id) do %>
             <div class="col-md-4">

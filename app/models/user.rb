@@ -11,9 +11,7 @@ class User < ActiveRecord::Base
 
   accepts_nested_attributes_for :address
 
-
   ROLES = { admin: 'admin' }
-
 
   def admin?
     role == ROLES[:admin]
