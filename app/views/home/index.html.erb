@@ -1,8 +1,60 @@
-<h2>Shared Office Spaces</h2>
-<% @spaces.each do |space| %>
-  <div>
-    <b><%= space.name %></b> ( <%= space.address %> )
-    <%= render 'shared/space_seats_availability', space: space %>
+<% if @spaces.present? %>
+  <div style="float:inherit">
+    <div class="page-header">
+      <h1>Featured Shared Office Spaces</h1>
+    </div>
+
+    <div>
+      <%= @spaces.in_groups_of(3, false) do |group| %>
+        <% group.each do |space| %>
+          <%= link_to shared_office_space_detail_path(space_id: space.id) do %>
+            <div class="col-md-4">
+              <div class="row">
+                <div class="col-xs-6 col-md-3">
+                    <%= image_tag space.thumbnail_picture, class: "thumb-img" %>
+                </div>
+              </div>
+              <b><%= space.name %></b> ( <%= space.address %> )
+              <br />
+              <%= render 'shared/space_seats_availability', space: space %>
+            </div>
+          <% end %>
+         <% end %>
+      <% end %>
+    </div>
   </div>
-  <br />
+  <br/ >
+  <br/ >
 <% end %>
+
+<% if @spaces.present? %>
+  <div style="float:inherit">
+    <div class="page-header">
+      <h1>Shared Office Spaces</h1>
+    </div>
+
+    <div>
+      <%= @spaces.in_groups_of(3, false) do |group| %>
+        <% group.each do |space| %>
+          <%= link_to shared_office_space_detail_path(space_id: space.id) do %>
+            <div class="col-md-4">
+              <div class="row">
+                <div class="col-xs-6 col-md-3">
+                    <%= image_tag space.thumbnail_picture, class: "thumb-img" %>
+                </div>
+              </div>
+              <b><%= space.name %></b> ( <%= space.address %> )
+              <br />
+              <%= render 'shared/space_seats_availability', space: space %>
+            </div>
+          <% end %>
+         <% end %>
+      <% end %>
+    </div>
+  </div>
+<% else %>
+  <p>No spaces found</p>
+<% end %>
+
+
+

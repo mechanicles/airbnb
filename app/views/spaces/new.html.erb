@@ -1,56 +1,55 @@
-<div class="row" style="padding-top: 10px;">
-  <h2>Create New Office Space</h2>
-  <%= form_for @space, class: "bootstrap-center-form-medium"  do |f| %>
-    <%= render 'shared/form_errors', object: @space %>
-
-    <div class="form-controls">
-      <%= f.label "Name *" %>
-      <%= f.text_field :name, class: "form-control" %>
-      <%= f.label "Address *" %>
-      <br/ >
-      <%= f.fields_for :address do |address_form| %>
-        <%= address_form.label :street1 %>
-        <%= address_form.text_field :street1, class: "form-control" %>
-        <%= address_form.label :street2 %>
-        <%= address_form.text_field :street2, class: "form-control" %>
-        <%= address_form.label :city %>
-        <%= address_form.text_field :city, class: "form-control" %>
-        <%= address_form.label :state %>
-        <%= address_form.text_field :state, class: "form-control" %>
-        <%= address_form.label :country %>
-        <%= address_form.text_field :country, class: "form-control" %>
-      <% end %>
-      <%= f.label :description %>
-      <%= f.text_area :description, class: "form-control" %>
-      <%= f.label :total_seats %>
-      <%= f.text_field :total_seats, class: "form-control" %>
-      <%= f.label :cost_per_seat %>
-      <%= f.text_field :cost_per_seat, class: "form-control" %>
-      <%= f.label :seating_period %>
-      <%= f.select :seating_period, seating_period, class: "form-control" %>
-      <br/>
-      <%= f.label :start_time %>
-      <%= f.select :start_time, timing_list, class: "form-control" %>
-      <%= f.label :end_time %>
-      <%= f.select :end_time, timing_list, class: "form-control" %>
-      <br/>
-      <%= f.label :amenities %>
-      <%= f.select :amenities, amenities, { include_hidden: false },
-        { multiple: true, class: "form-control" } %>
-      <br/>
-      <%= f.label "Upload Pictures" %>
-      <%= f.file_field :pictures, multiple: true %>
-      <% if current_user.admin? %>
-        <br/>
-        <%= f.label "Featured?" %>
-        <%= f.label :"Yes" %>
-        <%= f.radio_button :featured, true %>
-        <%= f.label :"No" %>
-        <%= f.radio_button :featured, false %>
-      <% end %>
-      <br />
-      <%= f.submit f.object.new_record? ? "Create" : "Update" %>
-    </div>
-  <% end %>
+<div class="page-header">
+  <h1>Create New Office Space</h1>
 </div>
 
+<%= form_for @space, class: "bootstrap-center-form-medium"  do |f| %>
+  <%= render 'shared/form_errors', object: @space %>
+  <div class="form-controls">
+    <%= f.label "Name *" %>
+    <%= f.text_field :name, class: "form-control" %>
+    <%= f.label "Address *" %>
+    <br/ >
+    <%= f.fields_for :address do |address_form| %>
+      <%= address_form.label :street1 %>
+      <%= address_form.text_field :street1, class: "form-control" %>
+      <%= address_form.label :street2 %>
+      <%= address_form.text_field :street2, class: "form-control" %>
+      <%= address_form.label :city %>
+      <%= address_form.text_field :city, class: "form-control" %>
+      <%= address_form.label :state %>
+      <%= address_form.text_field :state, class: "form-control" %>
+      <%= address_form.label :country %>
+      <%= address_form.text_field :country, class: "form-control" %>
+    <% end %>
+    <%= f.label :description %>
+    <%= f.text_area :description, class: "form-control" %>
+    <%= f.label :total_seats %>
+    <%= f.text_field :total_seats, class: "form-control" %>
+    <%= f.label :cost_per_seat %>
+    <%= f.text_field :cost_per_seat, class: "form-control" %>
+    <%= f.label :seating_period %>
+    <%= f.select :seating_period, seating_period, class: "form-control" %>
+    <br/>
+    <%= f.label :start_time %>
+    <%= f.select :start_time, timing_list, class: "form-control" %>
+    <%= f.label :end_time %>
+    <%= f.select :end_time, timing_list, class: "form-control" %>
+    <br/>
+    <%= f.label :amenities %>
+    <%= f.select :amenities, amenities, { include_hidden: false },
+      { multiple: true, class: "form-control" } %>
+    <br/>
+    <%= f.label "Upload Pictures" %>
+    <%= f.file_field :pictures, multiple: true %>
+    <% if current_user.admin? %>
+      <br/>
+      <%= f.label "Featured?" %>
+      <%= f.label :"Yes" %>
+      <%= f.radio_button :featured, true %>
+      <%= f.label :"No" %>
+      <%= f.radio_button :featured, false %>
+    <% end %>
+    <br />
+    <%= f.submit f.object.new_record? ? "Create" : "Update", class: "btn btn-default" %>
+  </div>
+<% end %>

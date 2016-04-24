@@ -1,2 +1,9 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.thumb-img {
+  height: 200px !important;
+  width: 200px !important;
+  max-width:none !important;
+  display: block;
+}

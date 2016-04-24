@@ -1,5 +1,6 @@
 <div class="row" style="padding-top: 10px;">
   <% if current_user.connected_to?('facebook') %>
+    <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
     <b> Facebook connected! </b>
   <% else %>
     <%= link_to "Connect with Facebook", user_omniauth_authorize_path(:facebook) %>
@@ -30,7 +31,7 @@
       <%= f.label :company_name %>
       <%= f.text_field :company_name, class: "form-control" %>
       <br />
-      <%= f.submit f.object.new_record? ? "Create" : "Update" %>
+      <%= f.submit f.object.new_record? ? "Create" : "Update", class: "btn btn-default" %>
     </div>
   <% end %>
 </div>

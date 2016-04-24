@@ -6,8 +6,10 @@ class Space < ActiveRecord::Base
   has_many :shared_office_spaces
   has_many :shared_users, through: :shared_office_spaces, source: :user
 
-  validates :owner, :name, presence: true
+  validates :owner, :name, :total_seats, presence: true
   validate :start_time_and_end_time
+
+  scope :featured, -> { where(featured: true ) }
 
   accepts_nested_attributes_for :address
 
@@ -16,6 +18,12 @@ class Space < ActiveRecord::Base
 
   def total_seats_booked?
     shared_office_spaces.count == total_seats
+  end
+
+  def thumbnail_picture
+    return "" if pictures.blank?
+
+    pictures.last.thumb.url
   end
 
   private
