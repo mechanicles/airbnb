@@ -1,10 +1,26 @@
 <br/>
 <h5><b>Book this place:</b></h5>
-<%= form_for :shared_office_space, url: shared_office_space_book_path, method: :post do |f| %>
+<%= form_for shared_office_space, url: shared_office_space_book_path, method: :post do |f| %>
+  <%= render 'shared/form_errors', object: @shared_office_space %>
   <%= f.label 'Publicly Shared' %>
   <%= f.check_box :publicly_shared %>
+  <br/>
+  <%= f.label :period %>
+  <%= f.select :period, seating_periods, class: "form-control" %>
+  <br/>
+  <%= f.label :period_start_date %>
+  <%= f.text_field :period_start_date, data: { info: 'datepicker' }, class: "form-control", style: "width:150px" %>
+  <%= f.label :period_end_date %>
+  <%= f.text_field :period_end_date, data: { info: 'datepicker' }, class: "form-control", style: "width:150px" %>
+  <br/>
+  <%= f.label "Reacurring ?" %>
+  <%= f.label :"Yes" %>
+  <%= f.radio_button :recurring, true %>
+  <%= f.label :"No" %>
+  <%= f.radio_button :recurring, false %>
+  <br/>
   <%= f.hidden_field :user_id, value: current_user.id %>
   <%= f.hidden_field :space_id, value: space.id %>
-  <br/>
+  <%= f.hidden_field :space_id, value: space.id %>
   <%= f.submit 'Book this space' %>
 <% end %>

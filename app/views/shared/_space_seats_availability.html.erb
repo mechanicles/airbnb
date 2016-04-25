@@ -3,5 +3,9 @@
 <% elsif current_user.booked?(space) %>
   <b> You have booked this place! </b>
 <% else %>
-  <%= set_available_or_book_option_for(space) %>
+  <% if local_assigns[:shared_office_space] %>
+    <%= set_available_or_book_option_for(space, shared_office_space) %>
+  <% else %>
+    <%= set_available_or_book_option_for(space) %>
+  <% end %>
 <% end %>

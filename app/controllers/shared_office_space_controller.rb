@@ -2,13 +2,14 @@ class SharedOfficeSpaceController < ApplicationController
 
   def detail
     @space = Space.find(params[:space_id])
+    @shared_office_space = SharedOfficeSpace.new
   end
 
   def book
-    @shared_space = SharedOfficeSpace.new(shared_office_space_params)
+    @shared_office_space = SharedOfficeSpace.new(shared_office_space_params)
     @space = Space.find(shared_office_space_params[:space_id])
 
-    if @shared_space.save
+    if @shared_office_space.save
       message = "Space booked successfully"
       redirect_to shared_office_space_detail_path(space_id: @space.id), notice: message
     else
@@ -24,7 +25,9 @@ class SharedOfficeSpaceController < ApplicationController
   private
 
   def shared_office_space_params
-    params.require(:shared_office_space).permit(:user_id, :space_id, :publicly_shared)
+    params.require(:shared_office_space).permit(:user_id, :space_id, :publicly_shared,
+                                                :period, :period_start_date, :period_end_date,
+                                                :recurring)
   end
 
 end

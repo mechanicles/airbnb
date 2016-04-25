@@ -13,4 +13,11 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-sprockets
+//= require bootstrap-datepicker
 //= require_tree .
+
+$(function() {
+  $('[data-info=datepicker]').datepicker({
+    format: 'yyyy-mm-dd'
+  });
+});
