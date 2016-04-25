@@ -14,7 +14,6 @@ class Space < ActiveRecord::Base
   accepts_nested_attributes_for :address
 
   AMENITIES = ['Internet', 'Canteen', 'Power Backup', '4 wheeler parking']
-  SEATING_PERIOD = ['day', 'week', 'month']
 
   def total_seats_booked?
     shared_office_spaces.count == total_seats

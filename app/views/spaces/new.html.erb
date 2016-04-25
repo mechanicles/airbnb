@@ -25,10 +25,12 @@
     <%= f.text_area :description, class: "form-control" %>
     <%= f.label "Total seats *" %>
     <%= f.text_field :total_seats, class: "form-control" %>
-    <%= f.label :cost_per_seat %>
-    <%= f.text_field :cost_per_seat, class: "form-control" %>
-    <%= f.label :seating_period %>
-    <%= f.select :seating_period, seating_period, class: "form-control" %>
+    <%= f.label :cost_per_seat_per_day %>
+    <%= f.text_field :cost_per_seat_per_day, class: "form-control" %>
+    <%= f.label :cost_per_seat_per_week %>
+    <%= f.text_field :cost_per_seat_per_week, class: "form-control" %>
+    <%= f.label :cost_per_seat_per_month %>
+    <%= f.text_field :cost_per_seat_per_month, class: "form-control" %>
     <br/>
     <%= f.label :start_time %>
     <%= f.select :start_time, timing_list, class: "form-control" %>

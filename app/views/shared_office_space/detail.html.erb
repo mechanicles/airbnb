@@ -9,9 +9,16 @@
   <br/>
   Address: <%= @space.address %>
   <br/>
-  Total Seats: <%= @space.total_seats %>
+  Total seats: <%= @space.total_seats %>
   <br/>
-  Participated Users: <%= @space.participated_users.count %>
+  Cost per seat per day: <%= @space.cost_per_seat_per_day %>
+  <br/>
+  Cost per seat per week: <%= @space.cost_per_seat_per_week %>
+  <br/>
+  Cost per seat per month: <%= @space.cost_per_seat_per_month %>
+  <br/>
+
+  Participated users: <%= @space.participated_users.count %>
   <br/>
   Start time: <%= @space.start_time %> | End time: <%= @space.end_time %>
   <br/>
