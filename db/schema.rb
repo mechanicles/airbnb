@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160425081749) do
+ActiveRecord::Schema.define(version: 20160425084624) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,11 +31,15 @@ ActiveRecord::Schema.define(version: 20160425081749) do
   add_index "addresses", ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable_type_and_addressable_id", using: :btree
 
   create_table "shared_office_spaces", force: :cascade do |t|
-    t.integer  "user_id",                        null: false
-    t.integer  "space_id",                       null: false
-    t.boolean  "publicly_shared", default: true
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.integer  "user_id",                          null: false
+    t.integer  "space_id",                         null: false
+    t.boolean  "publicly_shared",   default: true
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.string   "period"
+    t.datetime "period_start_date"
+    t.datetime "period_end_date"
+    t.boolean  "recurring"
   end
 
   add_index "shared_office_spaces", ["space_id"], name: "index_shared_office_spaces_on_space_id", using: :btree
