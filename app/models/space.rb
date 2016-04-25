@@ -9,7 +9,8 @@ class Space < ActiveRecord::Base
   validates :owner, :name, :total_seats, presence: true
   validate :start_time_and_end_time
 
-  scope :featured, -> { where(featured: true ) }
+  scope :featured, -> { where(featured: true) }
+  scope :unfeatured, -> { where(featured: false) }
 
   accepts_nested_attributes_for :address
 
