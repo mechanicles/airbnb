@@ -36,7 +36,7 @@ class Space < ActiveRecord::Base
   def start_time_and_end_time
     if start_time.nil? || end_time.nil?
       errors.add(:base, "Start time and End time should not be blank")
-    elsif start_time > end_time
+    elsif start_time.to_i > end_time.to_i
       errors.add(:start_time, "should be less than End time")
     end
   end
