@@ -63,5 +63,7 @@ Rails.application.routes.draw do
 
   resources :spaces
 
+  get 'home/index' => 'home#index'
+
   root 'home#index'
 end

@@ -14,6 +14,9 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require bootstrap-datepicker
+//= require angular
+//= require angular-resource
+//= require angular-route
 //= require_tree .
 
 $(function() {
