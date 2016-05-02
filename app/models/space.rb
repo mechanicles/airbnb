@@ -17,7 +17,14 @@ class Space < ActiveRecord::Base
   AMENITIES = ['Internet', 'Canteen', 'Power Backup', '4 wheeler parking']
 
   def as_json(options)
-    { name: name, address: address.try(:to_s), thumbnail_picture: thumbnail_picture }
+    {
+      id: id,
+      name: name,
+      address: address.try(:to_s),
+      thumbnail_picture: thumbnail_picture,
+      space_booked_by_current_user: options[:current_user] && options[:current_user].booked?(self),
+      total_seats_booked: total_seats_booked?
+    }
   end
 
   def total_seats_booked?
