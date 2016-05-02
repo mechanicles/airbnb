@@ -1,10 +1,9 @@
 var MyApp = angular.module('airbnb', []);
 
-
 MyApp.filter("sanitize", ['$sce', function($sce) {
   return function(htmlCode){
     return $sce.trustAsHtml(htmlCode);
-  }
+  };
 }]);
 
 MyApp.controller("HomeController", ['$scope', '$http', function($scope, $http) {
@@ -14,7 +13,7 @@ MyApp.controller("HomeController", ['$scope', '$http', function($scope, $http) {
       $scope.featured_spaces = $scope.data.featured_spaces;
       $scope.unfeatured_spaces = $scope.data.unfeatured_spaces;
 
-      $scope.availbility = function(space) {
+      $scope.availability = function(space) {
         if(space.total_seats_booked) {
           return "<b> All seats are booked! </b>";
         } else if(space.space_booked_by_current_user) {
