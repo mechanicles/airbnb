@@ -2,61 +2,44 @@
   <div ng-repeat='space in featured_spaces'>
     {{space.id}}
   </div>
+  <div>
+    <div class="page-header">
+      <h1>Featured Shared Office Spaces</h1>
+    </div>
     <div>
-      <div class="page-header">
-        <h1>Featured Shared Office Spaces</h1>
+      <div class="col-md-4" ng-repeat='space in featured_spaces'>
+        <div class="row">
+          <div class="col-xs-6 col-md-3">
+            <img ng-src="{{space.thumbnail_picture}}" alt="" class="thumb-img"/>
+          </div>
+        </div>
+        <b> {{ space.name }} </b> ( {{ space.address }} )
+        <br />
       </div>
-      <div>
-        <% @featured_spaces.in_groups_of(3, false) do |group| %>
-          <% group.each do |space| %>
-            <%= link_to shared_office_space_detail_path(space_id: space.id) do %>
-              <div class="col-md-4">
-                <div class="row">
-                  <div class="col-xs-6 col-md-3">
-                      <%= image_tag space.thumbnail_picture, class: "thumb-img" %>
-                  </div>
-                </div>
-                <b><%= space.name %></b> ( <%= space.address %> )
-                <br />
-                <%= render 'shared/space_seats_availability', space: space %>
-              </div>
-            <% end %>
-           <% end %>
-          <br>
-        <% end %>
-      </div>
+      <br>
     </div>
-    <br/ >
-    <br/ >
+  </div>
+  <br/ >
+  <br/ >
 
-  <% if @unfeatured_spaces.present? %>
-    <div style="clear:left">
-      <div class="page-header">
-        <h1>Shared Office Spaces</h1>
-      </div>
-
-      <div>
-        <% @unfeatured_spaces.in_groups_of(3, false) do |group| %>
-          <% group.each do |space| %>
-            <%= link_to shared_office_space_detail_path(space_id: space.id) do %>
-              <div class="col-md-4">
-                <div class="row">
-                  <div class="col-xs-6 col-md-3">
-                      <%= image_tag space.thumbnail_picture, class: "thumb-img" %>
-                  </div>
-                </div>
-                <b><%= space.name %></b> ( <%= space.address %> )
-                <br />
-                <%= render 'shared/space_seats_availability', space: space %>
-              </div>
-            <% end %>
-           <% end %>
-        <% end %>
-      </div>
+  <div style="clear:left">
+    <div class="page-header">
+      <h1>Shared Office Spaces</h1>
     </div>
-  <% else %>
-    <p>No spaces found</p>
-  <% end %>
+
+    <div>
+      <div class="col-md-4" ng-repeat='space in unfeatured_spaces'>
+        <div class="row">
+          <div class="col-xs-6 col-md-3">
+            <img ng-src="{{space.thumbnail_picture}}" alt="", class="thumb-img"/>
+          </div>
+        </div>
+        <b> {{ space.name }} </b> ( {{ space.address }} )
+        <br />
+      </div>
+      <br>
+    </div>
+  </div>
 <div>
 
 

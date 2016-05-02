@@ -16,6 +16,10 @@ class Space < ActiveRecord::Base
 
   AMENITIES = ['Internet', 'Canteen', 'Power Backup', '4 wheeler parking']
 
+  def as_json(options)
+    { name: name, address: address.try(:to_s), thumbnail_picture: thumbnail_picture }
+  end
+
   def total_seats_booked?
     shared_office_spaces.count == total_seats
   end
