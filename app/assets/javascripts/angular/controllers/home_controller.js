@@ -1,27 +1,13 @@
-var MyApp = angular.module('airbnb', ['ngRoute', 'ngResource']);
+var MyApp = angular.module('airbnb', []);
 
-MyApp.factory('Home', ['$resource', function($resource){
-  alert('factory');
-  return $resource('/home/index.json', {}, {
-    query: { method: 'GET' }
-  });
-}]);
+MyApp.controller("HomeController", ['$scope', '$http', function($scope, $http) {
+  $http.get('/home/index.json')
+    .then(function(response) {
+      $scope.data = response.data;
+      $scope.featured_spaces = $scope.data.featured_spaces;
+      $scope.unfeatured_spaces = $scope.data.unfeatured_spaces;
 
-MyApp.config([
-  '$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
-    alert('config');
-    $routeProvider.when('Home', {
-      templateUrl: 'templates/home/index.html',
-      controller: 'HomeListCtr'
+      console.log($scope.featured_spaces);
+      console.log($scope.unfeatured_spaces);
     });
-
-    $routeProvider.otherwise({
-      redirectTo: '/home'
-    });
-  }
-]);
-
-MyApp.controller("HomeListCtr", ['$scope', '$resource', 'Home', '$location', function($scope, $resource, Home, $location) {
-  $scope.data = Home.query();
-  console.log($scope.data.first.featured_spaces);
 }]);
