@@ -5,12 +5,14 @@
     </div>
     <div>
       <div class="col-md-4" ng-repeat='space in featured_spaces'>
-        <div class="row">
-          <div class="col-xs-6 col-md-3">
-            <img ng-src="{{space.thumbnail_picture}}" alt="" class="thumb-img"/>
+        <a href='/shared_office_space/detail?space_id={{space.id}}'>
+          <div class="row">
+            <div class="col-xs-6 col-md-3">
+              <img ng-src="{{space.thumbnail_picture}}" alt="" class="thumb-img"/>
+            </div>
           </div>
-        </div>
-        <b> {{ space.name }} </b> ( {{ space.address }} )
+          <b> {{ space.name }} </b> ( {{ space.address }} )
+        </a>
         <br />
         <p ng-bind-html="availability(space) | sanitize"></p>
       </div>
@@ -25,12 +27,14 @@
     </div>
     <div>
       <div class="col-md-4" ng-repeat='space in unfeatured_spaces'>
-        <div class="row">
-          <div class="col-xs-6 col-md-3">
-            <img ng-src="{{space.thumbnail_picture}}" alt="" class="thumb-img"/>
+        <a href='/shared_office_space/detail?space_id={{space.id}}'>
+          <div class="row">
+            <div class="col-xs-6 col-md-3">
+              <img ng-src="{{space.thumbnail_picture}}" alt="" class="thumb-img"/>
+            </div>
           </div>
-        </div>
-        <b> {{ space.name }} </b> ( {{ space.address }} )
+          <b> {{ space.name }} </b> ( {{ space.address }} )
+        </a>
         <br />
         <p ng-bind-html="availability(space) | sanitize"></p>
       </div>
